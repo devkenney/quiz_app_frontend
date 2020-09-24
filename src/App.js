@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { Route, Switch, useHistory } from 'react-router-dom';
+import axios from 'axios';
+import 'bootswatch/dist/solar/bootstrap.min.css'
+import Index from './components/Index'
+import Navbar from './components/Navbar';
+import New from './components/New';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="body">
+        <Navbar />
+        <Switch>
+          <Route
+            path="/index"
+            render={() => {
+              return (
+                <Index />
+              )
+            }}
+          />
+          <Route
+            path="/new"
+            render={() => {
+              return (
+                <New />
+              )
+            }}
+          />
+        </Switch>
+      </div>
     </div>
   );
 }
